@@ -8,5 +8,16 @@
     <artifactId>sniffer</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/jnetpcap/jnetpcap -->
+        <dependency>
+            <groupId>jnetpcap</groupId>
+            <artifactId>jnetpcap</artifactId>
+            <version>1.4.r1425-1f</version>
+        </dependency>
+
+
+    </dependencies>
+
 
 </project>
