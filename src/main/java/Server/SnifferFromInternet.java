@@ -170,7 +170,6 @@ public class SnifferFromInternet {
         // клас имплементации события нажатия start
         class startEventListener implements ActionListener {
 
-            @Override
             // обработка события нажатия на button start
             public void actionPerformed(ActionEvent e) {
                 // дезактивировать выбор адаптеров
@@ -183,7 +182,6 @@ public class SnifferFromInternet {
 
         // клас имплементации события нажатия stop
         class stopEventListener implements ActionListener {
-            @Override
             // обработка события нажатия на button stop
             public void actionPerformed(ActionEvent e) {
                 // Флаг закрытия pcap
@@ -205,7 +203,6 @@ public class SnifferFromInternet {
 
             String op = "Opened";
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 // comName - выбранная строка в JComboBox comList
                 JComboBox cb = (JComboBox)e.getSource();
@@ -235,13 +232,7 @@ public class SnifferFromInternet {
 
     PcapPacketHandler jpacketHandler = new PcapPacketHandler() {
 
-        // строка данных
-        String readData;
-        // буфер данных
-        byte[] bufrd = new byte [2000];
-
-        @Override
-        public void nextPacket(PcapPacket packet, String user) {
+        public void nextPacket(PcapPacket packet, Object user) {
             // данные фрейма data
             byte[] data = packet.getByteArray(0, packet.size());
             // номер фрейма
@@ -258,7 +249,13 @@ public class SnifferFromInternet {
             }
             // данные фрейма в окно input
             input.setText(readData);
+
         }
+
+        // строка данных
+        String readData;
+        // буфер данных
+        byte[] bufrd = new byte [2000];
     };
 
     // Поток с pcap.loop
@@ -286,9 +283,9 @@ public class SnifferFromInternet {
     public static void main(String[] args) {
 
         // создание объектов
-        JavaEthCapturer javaEthTest = new JavaEthCapturer();
-        JavaEthCapturer.Form form = javaEthTest.new Form();
-        JavaEthCapturer.PcapLoopThread pcapLoopThread = javaEthTest.new PcapLoopThread();
+        SnifferFromInternet javaEthTest = new SnifferFromInternet();
+        SnifferFromInternet.Form form = javaEthTest.new Form();
+        SnifferFromInternet.PcapLoopThread pcapLoopThread = javaEthTest.new PcapLoopThread();
         // по зарытию формы
         form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
