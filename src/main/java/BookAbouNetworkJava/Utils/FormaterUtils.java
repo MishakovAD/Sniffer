@@ -1,7 +1,5 @@
 package BookAbouNetworkJava.Utils;
 
-import com.sun.tools.javac.util.StringUtils;
-
 public class FormaterUtils {
     public static boolean isIP (String hostName) {
         if (hostName != null && hostName.contains("/")) {
